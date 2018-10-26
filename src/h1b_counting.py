@@ -20,20 +20,20 @@ with open(sys.argv[1]) as csvfin:
             n_fields = len(fields)
         else:
             if len(fields) == n_fields: # ignore line with missing data
-                # Occupation dictionary
                 if fields[status_ind].strip().upper() == 'CERTIFIED':
+                    # Occupation dictionary
                     occ_name = fields[soc_name_ind].strip().upper()+'__'+fields[soc_code_ind].strip().upper()
                     if occ_name not in occ_dict:
                         occ_dict[occ_name] = 1
                     else:
                         occ_dict[occ_name] += 1
-                #if fields[status_ind].strip().upper() == 'CERTIFIED':
                     # State dictionary
                     state = fields[state_ind].strip().upper()
                     if state not in state_dict:
                         state_dict[state] = 1
                     else:
                         state_dict[state] += 1
+                    # total number of certified applications
                     n_certified += 1
 
         iline += 1
